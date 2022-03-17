@@ -10,7 +10,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class ClientID {
     public static final String MESSAGE_CONSTRAINTS =
             "Client Index should only contain numbers, and it should not be blank";
-    public static final String MESSAGE_INDEX_CONSTRAINT = "Client Index cannot be 0!";
     public static final String VALIDATION_REGEX = "\\d{1,}";
     public final String id;
 
@@ -22,7 +21,6 @@ public class ClientID {
     public ClientID(String clientID) {
         requireNonNull(clientID);
         checkArgument(isValidClientID(clientID), MESSAGE_CONSTRAINTS);
-        checkArgument(isNotZeroClientID(clientID), MESSAGE_INDEX_CONSTRAINT);
         id = clientID;
     }
 
@@ -37,23 +35,10 @@ public class ClientID {
     }
 
     /**
-     * Returns true if a given string is a valid Client id.
+     * Returns true if a given string is a valid price number.
      */
     public static boolean isValidClientID(String test) {
         return test.matches(VALIDATION_REGEX);
-    }
-
-    /**
-     * Returns true if a client Id is more than zero
-     */
-    public static boolean isNotZeroClientID(String test) {
-
-        int clientID = Integer.parseInt(test);
-        if (clientID > 0) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     @Override

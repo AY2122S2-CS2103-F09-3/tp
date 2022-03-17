@@ -10,7 +10,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class InsuranceID {
     public static final String MESSAGE_CONSTRAINTS =
             "Insurance Index should only contain numbers, and it should not be blank";
-    public static final String MESSAGE_INDEX_CONSTRAINT = "Insurance Index cannot be 0!";
     public static final String VALIDATION_REGEX = "\\d{1,}";
     public final String id;
 
@@ -22,7 +21,6 @@ public class InsuranceID {
     public InsuranceID(String insuranceID) {
         requireNonNull(insuranceID);
         checkArgument(isValidInsuranceID(insuranceID), MESSAGE_CONSTRAINTS);
-        checkArgument(isNotZeroInsuranceID(insuranceID), MESSAGE_INDEX_CONSTRAINT);
         id = insuranceID;
     }
 
@@ -41,19 +39,6 @@ public class InsuranceID {
      */
     public static boolean isValidInsuranceID(String test) {
         return test.matches(VALIDATION_REGEX);
-    }
-
-    /**
-     * Returns true if a given insurance id is more than zero
-     */
-    public static boolean isNotZeroInsuranceID(String test) {
-
-        int clientID = Integer.parseInt(test);
-        if (clientID > 0) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     @Override
